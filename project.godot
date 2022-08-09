@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "ColorRect",
+"class": "ScreenTransition",
+"language": "GDScript",
+"path": "res://src/game/ScreenTransition.gd"
+} ]
+_global_script_class_icons={
+"ScreenTransition": ""
+}
+
 [application]
 
 config/name="Pico Tactics"
@@ -15,6 +25,10 @@ config/description="A pocket-sized tactics RPG!"
 run/main_scene="res://src/Main.tscn"
 config/icon="res://icon.png"
 config/quit_on_go_back=false
+
+[autoload]
+
+BackgroundMusic="*res://src/audio/BackgroundMusic.tscn"
 
 [display]
 
