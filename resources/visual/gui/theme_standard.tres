@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
 [ext_resource path="res://resources/visual/styleboxes/button_pressed_stylebox.tres" type="StyleBox" id=1]
 [ext_resource path="res://resources/visual/styleboxes/button_stylebox.tres" type="StyleBox" id=2]
@@ -6,8 +6,15 @@
 [ext_resource path="res://resources/visual/styleboxes/panel_stylebox.tres" type="StyleBox" id=4]
 [ext_resource path="res://resources/visual/atlastextures/checkbutton_off_atlas.tres" type="Texture" id=5]
 [ext_resource path="res://resources/visual/atlastextures/checkbutton_on_atlas.tres" type="Texture" id=6]
+[ext_resource path="res://resources/visual/styleboxes/scroll_background_stylebox.tres" type="StyleBox" id=7]
+[ext_resource path="res://resources/visual/atlastextures/grabber_slider_disabled_atlas.tres" type="Texture" id=8]
+[ext_resource path="res://resources/visual/atlastextures/grabber_slider_atlas.tres" type="Texture" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [resource]
 Button/colors/font_color = Color( 0.164706, 0.109804, 0.192157, 1 )
@@ -28,6 +35,13 @@ CheckButton/icons/on = ExtResource( 6 )
 CheckButton/icons/on_disabled = null
 CheckButton/styles/hover = ExtResource( 2 )
 CheckButton/styles/normal = ExtResource( 2 )
+HSlider/icons/grabber = ExtResource( 9 )
+HSlider/icons/grabber_disabled = ExtResource( 8 )
+HSlider/icons/grabber_highlight = ExtResource( 9 )
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource( 2 )
+HSlider/styles/grabber_area_highlight = SubResource( 3 )
+HSlider/styles/slider = ExtResource( 7 )
 Label/colors/font_color = Color( 0.164706, 0.109804, 0.192157, 1 )
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
@@ -36,4 +50,6 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
 Panel/styles/panel = ExtResource( 4 )
+PanelContainer/styles/panel = ExtResource( 4 )
 PopupPanel/styles/panel = ExtResource( 4 )
+VBoxContainer/constants/separation = 2

@@ -9,13 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Constants",
+"language": "GDScript",
+"path": "res://src/game/Constants.gd"
+}, {
 "base": "ColorRect",
 "class": "ScreenTransition",
 "language": "GDScript",
 "path": "res://src/game/ScreenTransition.gd"
+}, {
+"base": "Button",
+"class": "SoundButton",
+"language": "GDScript",
+"path": "res://src/ui/controlswithsound/SoundButton.gd"
+}, {
+"base": "CheckButton",
+"class": "SoundCheckButton",
+"language": "GDScript",
+"path": "res://src/ui/controlswithsound/SoundCheckButton.gd"
+}, {
+"base": "Reference",
+"class": "UISoundTypes",
+"language": "GDScript",
+"path": "res://src/ui/controlswithsound/UISoundTypes.gd"
 } ]
 _global_script_class_icons={
-"ScreenTransition": ""
+"Constants": "",
+"ScreenTransition": "",
+"SoundButton": "",
+"SoundCheckButton": "",
+"UISoundTypes": ""
 }
 
 [application]
@@ -28,6 +52,8 @@ config/quit_on_go_back=false
 
 [autoload]
 
+Config="*res://src/game/Config.gd"
+StandardSounds="*res://src/audio/StandardSounds.tscn"
 BackgroundMusic="*res://src/audio/BackgroundMusic.tscn"
 
 [display]
