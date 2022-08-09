@@ -32,8 +32,8 @@ BackgroundMusic="*res://src/audio/BackgroundMusic.tscn"
 
 [display]
 
-window/size/width=180
-window/size/height=180
+window/size/width=108
+window/size/height=192
 window/size/test_width=540
 window/size/test_height=960
 window/handheld/orientation="sensor_portrait"
@@ -43,6 +43,7 @@ window/stretch/aspect="expand"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom="res://resources/visual/gui/theme_standard.tres"
 theme/custom_font="res://resources/visual/gui/font_standard.tres"
 
 [importer_defaults]
