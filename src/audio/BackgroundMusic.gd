@@ -13,6 +13,7 @@ func _ready() -> void:
 func start(music: AudioStream) -> void:
 	_player.stream = music
 	_player.play(0)
+	print("playing")
 
 
 func stop() -> void:
