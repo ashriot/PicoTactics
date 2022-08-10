@@ -4,8 +4,7 @@ const _GAME_SCENE_PATH := "res://src/game/Game.tscn"
 
 onready var _screen_transition := $ScreenTransition as ScreenTransition
 
-onready var _quit_button := $"%Quit" \
-		as CanvasItem
+onready var _quit_button := $Buttons/Quit as CanvasItem
 
 onready var _config_panel := $ConfigPanel as Popup
 
