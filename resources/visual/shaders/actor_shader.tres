@@ -1,0 +1,36 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+const float TIME_MULT = 6.28 * 2f;
+
+uniform bool flashing;
+uniform float dissolve_value : hint_range(0, 1);
+
+uniform vec4 flash_colour : hint_color;
+uniform vec4 black_colour : hint_color;
+uniform sampler2D dissolve_texture : hint_albedo;
+
+void fragment()
+{
+	vec4 main_texture = texture(TEXTURE, UV);
+	
+	if (flashing && (main_texture != black_colour)
+			&& (sin(TIME * TIME_MULT) > 0f))
+	{
+		main_texture.rgb = flash_colour.rgb;
+	}
+	
+	vec4 noise_texture = texture(dissolve_texture, UV);
+	main_texture.a *= floor(dissolve_value + min(1, noise_texture.x));
+	
+	COLOR = main_texture;
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/flashing = null
+shader_param/dissolve_value = null
+shader_param/flash_colour = null
+shader_param/black_colour = null

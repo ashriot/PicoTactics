@@ -1,6 +1,6 @@
 class_name Constants
 
-const TILE_SIZE := 12
+const TILE_SIZE := 20
 const TILE_SIZE_V := Vector2(TILE_SIZE, TILE_SIZE)
 
 const TILE_HALF_SIZE_V := TILE_SIZE_V / 2
@@ -10,12 +10,12 @@ const MUSIC_BUS := "Music"
 const UI_BUS := "UI"
 
 const STAT_MODS := {
-#	StatType.Type.MAX_STAMINA: {
+#	StatType.Type.MAX_HP: {
 #		name = "Max Stamina",
 #		up = preload(
-#				"res://assets/graphics/ui/icons/statmods/max_stamina_up.png"),
+#				"res://assets/graphics/ui/icons/statmods/max_hp_up.png"),
 #		down = preload(
-#				"res://assets/graphics/ui/icons/statmods/max_stamina_down.png")
+#				"res://assets/graphics/ui/icons/statmods/max_hp_down.png")
 #	},
 #	StatType.Type.ATTACK: {
 #		name = "Attack",
@@ -29,10 +29,10 @@ const STAT_MODS := {
 #		up = preload("res://assets/graphics/ui/icons/statmods/move_up.png"),
 #		down = preload("res://assets/graphics/ui/icons/statmods/move_down.png")
 #	},
-#	StatType.Type.DEFENCE: {
+#	StatType.Type.DEFENSE: {
 #		name = "Defence",
-#		up = preload("res://assets/graphics/ui/icons/statmods/defence_up.png"),
-#		down = preload("res://assets/graphics/ui/icons/statmods/defence_down.png")
+#		up = preload("res://assets/graphics/ui/icons/statmods/defense_up.png"),
+#		down = preload("res://assets/graphics/ui/icons/statmods/defense_down.png")
 #	},
 #	StatType.Type.SPEED: {
 #		name = "Speed",

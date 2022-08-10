@@ -9,10 +9,45 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "TileObject",
+"class": "Actor",
+"language": "GDScript",
+"path": "res://src/core/actors/Actor.gd"
+}, {
+"base": "Resource",
+"class": "ActorDefinition",
+"language": "GDScript",
+"path": "res://src/core/actors/ActorDefinition.gd"
+}, {
+"base": "Node2D",
+"class": "ConditionIcons",
+"language": "GDScript",
+"path": "res://src/ui/actor/ConditionIcons.gd"
+}, {
 "base": "Reference",
 "class": "Constants",
 "language": "GDScript",
 "path": "res://src/game/Constants.gd"
+}, {
+"base": "Reference",
+"class": "Directions",
+"language": "GDScript",
+"path": "res://src/core/maps/Directions.gd"
+}, {
+"base": "Node",
+"class": "Game",
+"language": "GDScript",
+"path": "res://Game.gd"
+}, {
+"base": "Node2D",
+"class": "HpBar",
+"language": "GDScript",
+"path": "res://src/ui/actor/HpBar.gd"
+}, {
+"base": "Node2D",
+"class": "Map",
+"language": "GDScript",
+"path": "res://src/core/maps/Map.gd"
 }, {
 "base": "ColorRect",
 "class": "ScreenTransition",
@@ -30,15 +65,76 @@ _global_script_classes=[ {
 "path": "res://src/ui/controlswithsound/SoundCheckButton.gd"
 }, {
 "base": "Reference",
+"class": "StatModifier",
+"language": "GDScript",
+"path": "res://src/core/statuseffects/StatModifier.gd"
+}, {
+"base": "Resource",
+"class": "StatModifierDefinition",
+"language": "GDScript",
+"path": "res://src/core/statuseffects/StatModifierDefinition.gd"
+}, {
+"base": "Reference",
+"class": "StatType",
+"language": "GDScript",
+"path": "res://src/core/actors/StatType.gd"
+}, {
+"base": "Node",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://src/core/actors/Stats.gd"
+}, {
+"base": "Reference",
+"class": "StatusEffectTiming",
+"language": "GDScript",
+"path": "res://src/core/statuseffects/StatusEffectTiming.gd"
+}, {
+"base": "Node2D",
+"class": "TargetCursor",
+"language": "GDScript",
+"path": "res://src/core/maps/TargetCursor.gd"
+}, {
+"base": "Reference",
+"class": "TileGeometry",
+"language": "GDScript",
+"path": "res://src/core/maps/tiles/TileGeometry.gd"
+}, {
+"base": "Node2D",
+"class": "TileObject",
+"language": "GDScript",
+"path": "res://src/core/maps/tiles/TileObject.gd"
+}, {
+"base": "YSort",
+"class": "TurnQueue",
+"language": "GDScript",
+"path": "res://src/core/maps/TurnQueue.gd"
+}, {
+"base": "Reference",
 "class": "UISoundTypes",
 "language": "GDScript",
 "path": "res://src/ui/controlswithsound/UISoundTypes.gd"
 } ]
 _global_script_class_icons={
+"Actor": "res://assets/editor/actor.png",
+"ActorDefinition": "",
+"ConditionIcons": "",
 "Constants": "",
+"Directions": "",
+"Game": "",
+"HpBar": "",
+"Map": "res://assets/editor/map.png",
 "ScreenTransition": "",
 "SoundButton": "",
 "SoundCheckButton": "",
+"StatModifier": "",
+"StatModifierDefinition": "",
+"StatType": "",
+"Stats": "",
+"StatusEffectTiming": "",
+"TargetCursor": "",
+"TileGeometry": "",
+"TileObject": "",
+"TurnQueue": "",
 "UISoundTypes": ""
 }
 
@@ -68,9 +164,9 @@ window/stretch/aspect="expand"
 
 [gui]
 
-common/drop_mouse_on_gui_input_disabled=true
 theme/custom="res://resources/visual/gui/theme_standard.tres"
 theme/custom_font="res://resources/visual/gui/font_standard.tres"
+common/drop_mouse_on_gui_input_disabled=true
 
 [importer_defaults]
 
