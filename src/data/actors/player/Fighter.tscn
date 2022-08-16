@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/core/actors/Actor.tscn" type="PackedScene" id=1]
+
+[node name="Fighter" instance=ExtResource( 1 )]
+character_name = "Actor"
+actor_definition = null
+faction = 1
+fakes_death = false
+slide_direction = Vector2( 0, 0 )
+slide_distance = 0.0
+
+[node name="Center" parent="." index="0"]
+position = Vector2( 6, 6 )
+
+[node name="HpBar" parent="Center/Offset/Sprite" index="0"]
+visible = false
+position = Vector2( 0, -6 )

@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/ui/BattleInterface.gd" type="Script" id=1]
+[ext_resource path="res://src/core/maps/MapHighlights.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/game/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/ui/battle/BattleGUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/MouseControl.gd" type="Script" id=5]
+
+[node name="BattleInterface" type="Node"]
+script = ExtResource( 1 )
+
+[node name="MapHighlights" parent="." instance=ExtResource( 2 )]
+
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+
+[node name="MouseControl" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="BattleGUI" parent="." instance=ExtResource( 4 )]

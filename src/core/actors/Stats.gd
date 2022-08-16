@@ -27,15 +27,34 @@ var is_alive: bool setget , get_is_alive
 
 var max_hp: int setget , get_max_hp
 var attack: int setget , get_attack
+var strength: int setget , get_strength
+var agility: int setget , get_agility
+var intellect: int setget , get_intellect
+var defense: int setget , get_defense
+var parry: int setget , get_parry
+var evasion: int setget , get_evasion
+var resist: int setget , get_resist
+var crit_chance: int setget , get_crit_chance
+var crit_power: int setget , get_crit_power
 var move: int setget , get_move
-var speed: int setget , get_speed
+var dash: int setget , get_dash
 
 
 func init_from_def(def: ActorDefinition) -> void:
 	set_base_stat(StatType.Type.MAX_HP, def.max_hp)
+	set_base_stat(StatType.Type.MAX_AP, def.max_ap)
 	set_base_stat(StatType.Type.ATTACK, def.attack)
+	set_base_stat(StatType.Type.STRENGTH, def.strength)
+	set_base_stat(StatType.Type.AGILITY, def.agility)
+	set_base_stat(StatType.Type.INTELLECT, def.intellect)
+	set_base_stat(StatType.Type.DEFENSE, def.defense)
+	set_base_stat(StatType.Type.PARRY, def.parry)
+	set_base_stat(StatType.Type.EVASION, def.evasion)
+	set_base_stat(StatType.Type.RESIST, def.resist)
+	set_base_stat(StatType.Type.CRIT_CHANCE, def.crit_chance)
+	set_base_stat(StatType.Type.CRIT_POWER, def.crit_power)
 	set_base_stat(StatType.Type.MOVE, def.move)
-	set_base_stat(StatType.Type.SPEED, def.speed)
+	set_base_stat(StatType.Type.DASH, def.dash)
 
 
 func set_base_stat(stat_type: int, value: int) -> void:
@@ -123,20 +142,56 @@ func get_max_hp() -> int:
 	return get_stat(StatType.Type.MAX_HP)
 
 
-func get_max_energy() -> int:
-	return get_stat(StatType.Type.MAX_ENERGY)
+func get_max_ap() -> int:
+	return get_stat(StatType.Type.MAX_AP)
 
 
 func get_attack() -> int:
 	return get_stat(StatType.Type.ATTACK)
 
 
+func get_strength() -> int:
+	return get_stat(StatType.Type.STRENGTH)
+
+
+func get_agility() -> int:
+	return get_stat(StatType.Type.AGILITY)
+
+
+func get_intellect() -> int:
+	return get_stat(StatType.Type.INTELLECT)
+
+
+func get_defense() -> int:
+	return get_stat(StatType.Type.DEFENSE)
+
+
+func get_parry() -> int:
+	return get_stat(StatType.Type.PARRY)
+
+
+func get_evasion() -> int:
+	return get_stat(StatType.Type.EVASION)
+
+
+func get_resist() -> int:
+	return get_stat(StatType.Type.RESIST)
+
+
+func get_crit_chance() -> int:
+	return get_stat(StatType.Type.CRIT_CHANCE)
+
+
+func get_crit_power() -> int:
+	return get_stat(StatType.Type.CRIT_POWER)
+
+
 func get_move() -> int:
 	return get_stat(StatType.Type.MOVE)
 
 
-func get_speed() -> int:
-	return get_stat(StatType.Type.SPEED)
+func get_dash() -> int:
+	return get_stat(StatType.Type.DASH)
 
 
 func start_battle() -> void:

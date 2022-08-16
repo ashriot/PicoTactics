@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/core/actors/ActorDefinition.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+size = 1
+max_hp = 1
+max_ap = 1
+attack = 1
+strength = 1
+agility = 1
+intellect = 1
+defense = 1
+parry = 1
+evasion = 1
+resist = 1
+crit_chance = 1
+crit_power = 1
+move = 4
+dash = 1

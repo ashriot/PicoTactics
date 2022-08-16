@@ -35,6 +35,7 @@ CheckButton/icons/on = ExtResource( 6 )
 CheckButton/icons/on_disabled = null
 CheckButton/styles/hover = ExtResource( 2 )
 CheckButton/styles/normal = ExtResource( 2 )
+HBoxContainer/constants/separation = 1
 HSlider/icons/grabber = ExtResource( 9 )
 HSlider/icons/grabber_disabled = ExtResource( 8 )
 HSlider/icons/grabber_highlight = ExtResource( 9 )

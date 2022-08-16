@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AIActorTurn",
+"language": "GDScript",
+"path": "res://src/control/AIActorTurn.gd"
+}, {
+"base": "Reference",
+"class": "AIScoredAction",
+"language": "GDScript",
+"path": "res://src/control/AIScoredAction.gd"
+}, {
+"base": "Node2D",
+"class": "ActionMenu",
+"language": "GDScript",
+"path": "res://src/ui/battle/ActionMenu.gd"
+}, {
 "base": "TileObject",
 "class": "Actor",
 "language": "GDScript",
@@ -18,6 +33,36 @@ _global_script_classes=[ {
 "class": "ActorDefinition",
 "language": "GDScript",
 "path": "res://src/core/actors/ActorDefinition.gd"
+}, {
+"base": "PopupPanel",
+"class": "ActorDetailsPanel",
+"language": "GDScript",
+"path": "res://src/ui/battle/actordetails/ActorDetailsPanel.gd"
+}, {
+"base": "MarginContainer",
+"class": "ActorPortrait",
+"language": "GDScript",
+"path": "res://src/ui/battle/actordetails/ActorPortrait.gd"
+}, {
+"base": "VBoxContainer",
+"class": "ActorStatDetails",
+"language": "GDScript",
+"path": "res://src/ui/battle/actordetails/ActorStatDetails.gd"
+}, {
+"base": "Control",
+"class": "ActorStatusPanel",
+"language": "GDScript",
+"path": "res://src/ui/battle/ActorStatusPanel.gd"
+}, {
+"base": "CanvasLayer",
+"class": "BattleGUI",
+"language": "GDScript",
+"path": "res://src/ui/battle/BattleGUI.gd"
+}, {
+"base": "Node",
+"class": "BattleInterface",
+"language": "GDScript",
+"path": "res://src/ui/BattleInterface.gd"
 }, {
 "base": "Node2D",
 "class": "ConditionIcons",
@@ -39,6 +84,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game.gd"
 }, {
+"base": "Camera2D",
+"class": "GameCamera",
+"language": "GDScript",
+"path": "res://src/game/GameCamera.gd"
+}, {
 "base": "Node2D",
 "class": "HpBar",
 "language": "GDScript",
@@ -49,10 +99,50 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/core/maps/Map.gd"
 }, {
+"base": "Node",
+"class": "MapHighlights",
+"language": "GDScript",
+"path": "res://src/core/maps/MapHighlights.gd"
+}, {
+"base": "Node",
+"class": "MouseControl",
+"language": "GDScript",
+"path": "res://src/ui/MouseControl.gd"
+}, {
+"base": "Reference",
+"class": "Pathfinding",
+"language": "GDScript",
+"path": "res://src/control/Pathfinding.gd"
+}, {
 "base": "ColorRect",
 "class": "ScreenTransition",
 "language": "GDScript",
 "path": "res://src/game/ScreenTransition.gd"
+}, {
+"base": "Node",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://src/core/skills/Skill.gd"
+}, {
+"base": "PopupPanel",
+"class": "SkillDetails",
+"language": "GDScript",
+"path": "res://src/ui/battle/SkillDetails.gd"
+}, {
+"base": "Node",
+"class": "SkillEffect",
+"language": "GDScript",
+"path": "res://src/core/skills/SkillEffect.gd"
+}, {
+"base": "Control",
+"class": "SkillPanel",
+"language": "GDScript",
+"path": "res://src/ui/battle/SkillPanel.gd"
+}, {
+"base": "Resource",
+"class": "SkillRange",
+"language": "GDScript",
+"path": "res://assets/editor/SkillRange.gd"
 }, {
 "base": "Button",
 "class": "SoundButton",
@@ -80,6 +170,16 @@ _global_script_classes=[ {
 "path": "res://src/core/actors/StatType.gd"
 }, {
 "base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/state/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/state/StateMachine.gd"
+}, {
+"base": "Node",
 "class": "Stats",
 "language": "GDScript",
 "path": "res://src/core/actors/Stats.gd"
@@ -95,6 +195,16 @@ _global_script_classes=[ {
 "path": "res://src/core/maps/TargetCursor.gd"
 }, {
 "base": "Reference",
+"class": "TargetingData",
+"language": "GDScript",
+"path": "res://assets/editor/TargetingData.gd"
+}, {
+"base": "TileSet",
+"class": "TerrainTileSet",
+"language": "GDScript",
+"path": "res://src/core/maps/TerrainTileSet.gd"
+}, {
+"base": "Reference",
 "class": "TileGeometry",
 "language": "GDScript",
 "path": "res://src/core/maps/tiles/TileGeometry.gd"
@@ -103,6 +213,11 @@ _global_script_classes=[ {
 "class": "TileObject",
 "language": "GDScript",
 "path": "res://src/core/maps/tiles/TileObject.gd"
+}, {
+"base": "Resource",
+"class": "TileProperties",
+"language": "GDScript",
+"path": "res://src/core/maps/tiles/TileProperties.gd"
 }, {
 "base": "YSort",
 "class": "TurnQueue",
@@ -113,29 +228,64 @@ _global_script_classes=[ {
 "class": "UISoundTypes",
 "language": "GDScript",
 "path": "res://src/ui/controlswithsound/UISoundTypes.gd"
+}, {
+"base": "Reference",
+"class": "WalkRange",
+"language": "GDScript",
+"path": "res://src/control/WalkRange.gd"
+}, {
+"base": "Reference",
+"class": "WalkRangeFactory",
+"language": "GDScript",
+"path": "res://src/control/WalkRangeFactory.gd"
 } ]
 _global_script_class_icons={
+"AIActorTurn": "",
+"AIScoredAction": "",
+"ActionMenu": "",
 "Actor": "res://assets/editor/actor.png",
 "ActorDefinition": "",
+"ActorDetailsPanel": "",
+"ActorPortrait": "",
+"ActorStatDetails": "",
+"ActorStatusPanel": "",
+"BattleGUI": "",
+"BattleInterface": "",
 "ConditionIcons": "",
 "Constants": "",
 "Directions": "",
 "Game": "",
+"GameCamera": "",
 "HpBar": "",
 "Map": "res://assets/editor/map.png",
+"MapHighlights": "",
+"MouseControl": "",
+"Pathfinding": "",
 "ScreenTransition": "",
+"Skill": "res://assets/editor/skill.png",
+"SkillDetails": "",
+"SkillEffect": "",
+"SkillPanel": "",
+"SkillRange": "res://assets/editor/skill_range.png",
 "SoundButton": "",
 "SoundCheckButton": "",
 "StatModifier": "",
 "StatModifierDefinition": "",
 "StatType": "",
+"State": "",
+"StateMachine": "",
 "Stats": "",
 "StatusEffectTiming": "",
 "TargetCursor": "",
+"TargetingData": "",
+"TerrainTileSet": "res://assets/editor/tile_properties_set.png",
 "TileGeometry": "",
 "TileObject": "",
+"TileProperties": "res://assets/editor/tile_properties.png",
 "TurnQueue": "",
-"UISoundTypes": ""
+"UISoundTypes": "",
+"WalkRange": "",
+"WalkRangeFactory": ""
 }
 
 [application]
@@ -164,9 +314,9 @@ window/stretch/aspect="expand"
 
 [gui]
 
+common/drop_mouse_on_gui_input_disabled=true
 theme/custom="res://resources/visual/gui/theme_standard.tres"
 theme/custom_font="res://resources/visual/gui/font_standard.tres"
-common/drop_mouse_on_gui_input_disabled=true
 
 [importer_defaults]
 

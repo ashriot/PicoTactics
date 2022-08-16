@@ -40,7 +40,7 @@ var stats: Stats setget , get_stats
 var attack_skill: Node setget , get_attack
 var skills: Array setget , get_skills
 
-# Includes attack skill. Does not include skills that need more energy.
+# Includes attack skill. Does not include skills that need more AP.
 var all_active_skills: Array setget , get_all_active_skills
 
 var target_visible: bool setget set_target_visible, get_target_visible
@@ -247,7 +247,7 @@ func charge_skills() -> void:
 		s.charge()
 
 
-# Includes attack skill. Does not include skills that need more energy.
+# Includes attack skill. Does not include skills that need more AP.
 func get_all_active_skills() -> Array:
 	var result := []
 
@@ -472,7 +472,7 @@ func _animate_hit(direction: Vector2) -> void:
 	reset_pose()
 
 
-func _on_StaminaBar_animation_finished() -> void:
+func _on_HPBar_animation_finished() -> void:
 	_hp_bar_animating = false
 	_hp_bar.visible = false
 
