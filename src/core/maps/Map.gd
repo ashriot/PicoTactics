@@ -30,14 +30,19 @@ func _ready() -> void:
 	if not Engine.editor_hint:
 		for a in get_actors():
 			var actor := a as Actor
+
+			actor.map = self
+
 			# warning-ignore:return_value_discarded
-			actor.connect("dying", self, "_actor_dying", [actor],
+			actor.connect("moved", self, "_on_actor_moved", [actor])
+			# warning-ignore:return_value_discarded
+			actor.connect("dying", self, "_on_actor_dying", [actor],
 					CONNECT_ONESHOT)
 			# warning-ignore:return_value_discarded
 			actor.connect("died", self, "remove_actor", [actor],
 					CONNECT_ONESHOT)
 
-		update_terrain_effects()
+			_on_actor_moved(actor) # Init first position
 
 
 func _get_configuration_warning() -> String:
@@ -229,9 +234,21 @@ func actor_can_be_pushed_into_cell(actor: Actor, cell: Vector2) -> bool:
 	return result
 
 
+func add_actor(actor: Actor) -> void:
+	assert(not actor in _actors.get_children())
+	if actor.map:
+		var other_map := actor.map as Map
+		other_map.remove_actor(actor)
+
+	_actors.add_child(actor)
+	actor.map = self
+
+
 func remove_actor(actor: Actor) -> void:
 	assert(actor in _actors.get_children())
 	_actors.remove_child(actor)
+	actor.map = null
+
 	emit_signal("actor_removed", actor)
 
 
@@ -241,20 +258,18 @@ func reset_actor_virtual_origins() -> void:
 		actor.reset_virtual_origin()
 
 
-func update_terrain_effects() -> void:
-	for a in get_actors():
-		var actor := a as Actor
-		if _on_defensive_terrain(actor):
-			actor.stats.add_stat_mod(_COVER_STAT_MOD)
-		else:
-			actor.stats.remove_stat_mod(_COVER_STAT_MOD)
-
-
 func add_effect(effect: Node2D) -> void:
 	_effects.add_child(effect)
 
 
-func _actor_dying(actor: Actor) -> void:
+func _on_actor_moved(actor: Actor) -> void:
+	if _on_defensive_terrain(actor):
+		actor.stats.add_stat_mod(_COVER_STAT_MOD)
+	else:
+		actor.stats.remove_stat_mod(_COVER_STAT_MOD)
+
+
+func _on_actor_dying(actor: Actor) -> void:
 	for c in actor.covered_cells:
 		var cell := c as Vector2
 		add_decal(Decal.BLOOD_SPLATTER, cell)

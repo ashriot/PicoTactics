@@ -1,10 +1,57 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/ui/battle/BattleGUI.gd" type="Script" id=1]
 [ext_resource path="res://src/ui/battle/ActorStatusPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ui/battle/SkillPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/graphics/ui/settings_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/graphics/ui/settings.png" type="Texture" id=5]
+[ext_resource path="res://src/ui/battle/ActionMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/ui/battle/actordetails/ActorDetailsPanel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/ui/battle/BorderedTurnPanel.tscn" type="PackedScene" id=8]
 
 [node name="BattleGUI" type="CanvasLayer"]
 script = ExtResource( 1 )
 
-[node name="CurrentActorStatusPanel" parent="." instance=ExtResource( 2 )]
-margin_bottom = 0.0
+[node name="CurrentActorStatus" parent="." instance=ExtResource( 2 )]
+
+[node name="OtherActorStatus" parent="." instance=ExtResource( 2 )]
+margin_top = -46.0
+margin_bottom = -24.0
+
+[node name="SkillPanel" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="OptionsButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -14.0
+margin_bottom = 14.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+expand = true
+stretch_mode = 3
+
+[node name="ActionMenuRegion" type="ReferenceRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = 67.0
+margin_right = -18.0
+margin_bottom = -66.0
+
+[node name="ActionMenu" parent="." instance=ExtResource( 6 )]
+
+[node name="ActorDetailsPanel" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="BorderedTurnPanel" parent="." instance=ExtResource( 8 )]
+margin_right = 94.0
+
+[node name="GameOptionsPanel" type="PopupPanel" parent="."]
+margin_right = 4.0
+margin_bottom = 4.0
+
+[connection signal="pressed" from="OptionsButton" to="." method="_on_OptionsButton_pressed"]

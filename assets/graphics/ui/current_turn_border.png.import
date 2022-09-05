@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/will.png-48040d2b16ca01c1f7e5d0df5c97b223.stex"
+path="res://.import/current_turn_border.png-7bffba8736e3c428a89ecf370b473743.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/ui/icons/stats/will.png"
-dest_files=[ "res://.import/will.png-48040d2b16ca01c1f7e5d0df5c97b223.stex" ]
+source_file="res://assets/graphics/ui/current_turn_border.png"
+dest_files=[ "res://.import/current_turn_border.png-7bffba8736e3c428a89ecf370b473743.stex" ]
 
 [params]
 

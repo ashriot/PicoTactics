@@ -4,9 +4,9 @@ extends Control
 signal portrait_pressed
 
 onready var _portrait_button := $PortraitButton as Button
-onready var _portrait := _portrait_button.get_node("Sprite") as Sprite
+onready var _portrait := _portrait_button.get_node("ActorPortrait") as ActorPortrait
 
-onready var _name := $PanelContainer/MarginContainer/VBoxContainer/Name as Label
+onready var _name := $Banner/Name as Label
 
 onready var _hp_bar := $PanelContainer/MarginContainer/VBoxContainer/ \
 		HBoxContainer/HP/HPBar as Range
@@ -14,9 +14,9 @@ onready var _current_hp := $PanelContainer/MarginContainer/VBoxContainer/ \
 		HBoxContainer/HP/CurrentHP as RichTextLabel
 
 onready var _ap_bar := $PanelContainer/MarginContainer/VBoxContainer/ \
-		HBoxContainer/AP/APBar as Range
+		AP/APBar as Range
 onready var _current_ap := $PanelContainer/MarginContainer/VBoxContainer/ \
-		HBoxContainer/AP/CurrentAP as RichTextLabel
+		AP/CurrentAP as RichTextLabel
 
 
 func set_actor(actor: Actor, portrait_clickable: bool) -> void:

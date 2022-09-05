@@ -14,6 +14,8 @@ var action_menu_position: Vector2 setget \
 		set_action_menu_pos, get_action_menu_pos
 var action_menu_open: bool setget , get_action_menu_open
 
+onready var turn_panel := ($BorderedTurnPanel as BorderedTurnPanel).turn_panel
+
 onready var _current_actor_status := $CurrentActorStatus as ActorStatusPanel
 onready var _other_actor_status := $OtherActorStatus as ActorStatusPanel
 
@@ -45,8 +47,7 @@ func set_current_actor(value: Actor) -> void:
 	)
 
 	if current_actor:
-		_action_menu.set_actions(
-				current_actor.attack_skill, current_actor.skills)
+		_action_menu.set_actions(current_actor.skills)
 	else:
 		_action_menu.clear_skills()
 
@@ -56,7 +57,11 @@ func set_other_actor(value: Actor) -> void:
 		other_actor.other_target_visible = false
 	other_actor = value
 	_set_actor(other_actor, _other_actor_status, true)
-	other_actor.other_target_visible = true
+	if other_actor:
+		other_actor.other_target_visible = true
+		turn_panel.select_other_actor(other_actor.get_index())
+	else:
+		turn_panel.clear_other_actor()
 
 
 func set_action_menu_pos(value: Vector2) -> void:

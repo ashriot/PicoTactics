@@ -35,7 +35,7 @@ func clear() -> void:
 
 func _on_Skill_pressed() -> void:
 	_details.set_position(_details_pos.global_position)
-	_details.show_skill(_skill, false)
+	_details.show_skill(_skill)
 
 
 func _on_Cancel_pressed() -> void:

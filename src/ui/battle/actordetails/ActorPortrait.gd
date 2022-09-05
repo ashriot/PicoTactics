@@ -2,16 +2,16 @@ tool
 class_name ActorPortrait
 extends MarginContainer
 
-export var portrait: Texture = null setget set_portrait
+export var texture: Texture = null setget set_texture
 
 onready var _sprite := $Sprite as Sprite
 
 
 func _ready() -> void:
-	set_portrait(portrait)
+	set_texture(texture)
 
 
-func set_portrait(value: Texture) -> void:
-	portrait = value
+func set_texture(value: Texture) -> void:
+	texture = value
 	if _sprite:
-		_sprite.texture = portrait
+		_sprite.texture = texture

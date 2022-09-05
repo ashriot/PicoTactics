@@ -12,4 +12,4 @@ dest_files=[ "res://.import/battle.mp3-d0a632e39d045de7a9321aa1a73cc026.mp3str" 
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=6.4

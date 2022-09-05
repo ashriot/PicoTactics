@@ -1,20 +1,18 @@
 class_name ActorDetailsPanel
 extends PopupPanel
 
-onready var _portrait := $Main/Header/PortraitMargin/PortraitBorder/Portrait \
-		as TextureRect
+onready var _portrait := $Main/Header/ActorPortrait as ActorPortrait
 onready var _name := $Main/Header/HeaderInfoMargin/VBoxContainer/Name as Label
 
 onready var _hp_info := $Main/Header/HeaderInfoMargin/VBoxContainer/ \
-		HP as Control
-onready var _current_hp := _hp_info.get_node("CurrentHP") \
+		HBoxContainer/HP as Control
+onready var _hp := _hp_info.get_node("HP") \
 		as Label
-onready var _max_hp := _hp_info.get_node("MaxHP") as Label
 
 onready var _stats := $Main/StatsPanel/MarginContainer/Stats as Control
-onready var _attack := _stats.get_node("AttackInfo") as ActorStatDetails
-onready var _move := _stats.get_node("MoveInfo") as ActorStatDetails
-onready var _speed := _stats.get_node("SpeedInfo") as ActorStatDetails
+onready var _attack := _stats.get_node("ParryInfo") as ActorStatDetails
+onready var _move := _stats.get_node("EvasionInfo") as ActorStatDetails
+onready var _speed := _stats.get_node("ResistInfo") as ActorStatDetails
 
 #onready var _skills := $Main/SkillsContainer/Skills as ActorSkillsDetails
 #onready var _conditions := $Main/ConditionsContainer/Conditions \
@@ -27,8 +25,7 @@ func set_actor(actor: Actor) -> void:
 	_portrait.texture = actor.portrait
 	_name.text = actor.character_name
 
-	_current_hp.text = str(actor.stats.hp)
-	_max_hp.text = str(actor.stats.max_hp)
+	_hp.text = str(actor.stats.hp) + "/" + str(actor.stats.max_hp)
 
 	_set_stat_info(actor.stats)
 

@@ -110,6 +110,7 @@ custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 icon = ExtResource( 6 )
+icon_align = 1
 script = ExtResource( 8 )
 
 [node name="Copyright" type="Label" parent="."]
@@ -126,6 +127,9 @@ valign = 2
 margin_right = 85.0
 
 [node name="ScreenTransition" parent="." instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
