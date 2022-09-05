@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Battle-Beast.mp3-f39c6061ab3d497e676d124376913ccd.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Battle-Beast.mp3"
+dest_files=[ "res://.import/Battle-Beast.mp3-f39c6061ab3d497e676d124376913ccd.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

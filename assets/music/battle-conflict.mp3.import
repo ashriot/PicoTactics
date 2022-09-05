@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/battle-conflict.mp3-9553834fafbf44ac53852df88bbde3de.mp3str"
+
+[deps]
+
+source_file="res://assets/music/battle-conflict.mp3"
+dest_files=[ "res://.import/battle-conflict.mp3-9553834fafbf44ac53852df88bbde3de.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

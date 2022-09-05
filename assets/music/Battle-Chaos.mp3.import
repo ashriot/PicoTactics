@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Battle-Chaos.mp3-f1e57eb38440a499b25728cf5dc946e8.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Battle-Chaos.mp3"
+dest_files=[ "res://.import/Battle-Chaos.mp3-f1e57eb38440a499b25728cf5dc946e8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
