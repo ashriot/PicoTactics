@@ -34,11 +34,11 @@ func _ready() -> void:
 func update_icons(stats: Stats) -> void:
 	_clear()
 
-	_add_stat_mod_icon(stats, StatType.Type.MAX_STAMINA)
+	_add_stat_mod_icon(stats, StatType.Type.MAX_HP)
 	_add_stat_mod_icon(stats, StatType.Type.ATTACK)
-	_add_stat_mod_icon(stats, StatType.Type.DEFENCE)
+	_add_stat_mod_icon(stats, StatType.Type.STRENGTH)
 	_add_stat_mod_icon(stats, StatType.Type.MOVE)
-	_add_stat_mod_icon(stats, StatType.Type.SPEED)
+	_add_stat_mod_icon(stats, StatType.Type.DASH)
 
 	if _enabled_icons.size() > 0:
 		var first_icon := _enabled_icons.front() as CanvasItem

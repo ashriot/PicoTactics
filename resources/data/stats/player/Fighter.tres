@@ -1,8 +1,9 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://src/core/actors/ActorDefinition.gd" type="Script" id=1]
 [ext_resource path="res://assets/graphics/actors/fighter.png" type="Texture" id=2]
 [ext_resource path="res://assets/graphics/portraits/portrait_fighter.png" type="Texture" id=3]
+[ext_resource path="res://src/data/skills/fighter/RapidStrikes.tscn" type="PackedScene" id=4]
 
 [resource]
 script = ExtResource( 1 )
@@ -23,3 +24,4 @@ crit_chance = 1
 crit_power = 1
 move = 2
 dash = 2
+skill0 = ExtResource( 4 )

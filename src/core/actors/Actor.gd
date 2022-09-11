@@ -10,9 +10,11 @@ const _BASE_BLOOD_TIME := 0.3
 
 const _FAKE_DEATH_FLY_SPEED := 200
 
-signal animation_finished
+signal moved
+
+signal animation_finished # Emitted using animations
 # warning-ignore:unused_signal
-signal attack_hit
+signal attack_hit # Emitted using animations
 
 signal dying
 signal died
@@ -32,6 +34,8 @@ export var fakes_death := false
 export var slide_direction := Vector2.ZERO setget set_slide_direction
 export var slide_distance := 0.0 setget set_slide_distance
 
+var map: Node setget set_map, get_map # Map
+
 var portrait: Texture setget , get_portrait
 
 var round_finished := false
@@ -40,7 +44,7 @@ var stats: Stats setget , get_stats
 var attack_skill: Node setget , get_attack
 var skills: Array setget , get_skills
 
-# Includes attack skill. Does not include skills that need more AP.
+# Includes attack skill. Does not include skills that need more energy.
 var all_active_skills: Array setget , get_all_active_skills
 
 var target_visible: bool setget set_target_visible, get_target_visible
@@ -53,6 +57,10 @@ var hp_bar_modifier: int setget set_hp_bar_modifier, \
 var animating: bool setget , get_is_animating
 
 var virtual_origin_cell: Vector2 setget set_virtual_origin_cell
+
+var report_moves := true
+
+var _map: Node = null
 
 var _animating := false
 var _hp_bar_animating := false
@@ -94,6 +102,7 @@ func _ready() -> void:
 
 	if not Engine.editor_hint:
 		set_actor_definition(actor_definition)
+		_init_stats_and_skills()
 
 		_hp_bar.max_hp = get_stats().max_hp
 		_condition_icons.update_icons(get_stats())
@@ -107,10 +116,17 @@ func _process(delta: float) -> void:
 		position += _fly_direction * _FAKE_DEATH_FLY_SPEED * delta
 
 
+func _exit_tree() -> void:
+	_map = null
+
+
 # Override
 func set_origin_cell(value: Vector2) -> void:
 	.set_origin_cell(value)
 	_using_virtual_origin = false
+
+	if report_moves:
+		emit_signal("moved")
 
 
 # Override
@@ -171,26 +187,11 @@ func set_slide_distance(value: float) -> void:
 func set_actor_definition(value: Resource) -> void:
 	actor_definition = value
 
-	_clear_skills()
 	if actor_definition:
 		var ad := actor_definition as ActorDefinition
 		set_size(ad.size)
 		if _sprite:
 			_sprite.texture = ad.sprite
-
-		if not Engine.editor_hint:
-			get_stats().init_from_def(ad)
-
-			if ad.attack_skill:
-				var new_attack_skill := ad.attack_skill.instance()
-				new_attack_skill.is_attack = true
-				$Attack.add_child(new_attack_skill)
-
-			for s in ad.skills:
-				var skill_scene := s as PackedScene
-				var skill := skill_scene.instance() as Node
-				skill.is_attack = false
-				$Skills.add_child(skill)
 	else:
 		set_size(1)
 		if _sprite:
@@ -220,6 +221,18 @@ func set_other_target_visible(new_value: bool) -> void:
 	_other_target_cursor.visible = new_value
 
 
+func set_map(new_map: Node) -> void:
+	if _map and (self in _map.get_actors()):
+		push_error("Actor not removed from old map using Map.remove_actor")
+	if new_map and not (self in new_map.get_actors()):
+		push_error("Actor not added to new map using Map.add_actor")
+	_map = new_map
+
+
+func get_map() -> Node:
+	return _map
+
+
 func get_stats() -> Stats:
 	var result: Stats = null
 	if $Stats:
@@ -247,7 +260,7 @@ func charge_skills() -> void:
 		s.charge()
 
 
-# Includes attack skill. Does not include skills that need more AP.
+# Includes attack skill. Does not include skills that need more energy.
 func get_all_active_skills() -> Array:
 	var result := []
 
@@ -386,7 +399,6 @@ func animate_attack(direction: Vector2, reduce_lunge := false,
 		_anim.play("attack_reduced")
 	else:
 		_anim.play("attack")
-	_anim.play("attack")
 	yield(_anim, "animation_finished")
 
 	_audio.volume_db = linear2db(1)
@@ -445,13 +457,21 @@ func _randomize_idle_start() -> void:
 		_anim.advance(offset)
 
 
-func _clear_skills() -> void:
-	for a in $Attack.get_children():
-		var attack := a as Node
-		attack.queue_free()
-	for s in $Skills.get_children():
-		var skill := s as Node
-		skill.queue_free()
+func _init_stats_and_skills():
+	if actor_definition:
+		var ad := actor_definition as ActorDefinition
+
+		get_stats().init_from_def(ad)
+		if ad.attack_skill:
+			var new_attack_skill := ad.attack_skill.instance()
+			new_attack_skill.is_attack = true
+			$Attack.add_child(new_attack_skill)
+
+		for s in ad.skills:
+			var skill_scene := s as PackedScene
+			var skill := skill_scene.instance() as Node
+			skill.is_attack = false
+			$Skills.add_child(skill)
 
 
 func _animate_hpbar(change: int) -> void:
@@ -472,7 +492,7 @@ func _animate_hit(direction: Vector2) -> void:
 	reset_pose()
 
 
-func _on_HPBar_animation_finished() -> void:
+func _on_HpBar_animation_finished() -> void:
 	_hp_bar_animating = false
 	_hp_bar.visible = false
 
